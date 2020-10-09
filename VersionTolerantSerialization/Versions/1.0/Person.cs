@@ -4,34 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
-
+using VersionTolerantSerialization;
 
 namespace VersionA
 {
     [Serializable]
-    class Person
+    class Person : PersonModule
     {
-        //Version 1.0
-        private string firstName;
-        private string lastName;
+        string firstName;
+        string lastName;
 
-        public string FirstName 
+        public new string FirstName 
         { 
             get {return this.firstName; }
             set { this.firstName = value; }
         }
 
-        public string LastName
+        public new string LastName
         {
             get { return this.lastName; }
             set { this.lastName = value; }
         }
 
-        public void Clear()
+        public new void Clear()
         {
             this.firstName = "";
             this.lastName = "";
-        
         }
     }
 

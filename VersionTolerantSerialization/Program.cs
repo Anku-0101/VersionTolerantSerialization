@@ -24,15 +24,21 @@ namespace VersionTolerantSerialization
         static void Main(string[] args)
         {
             string path = @"D:\\SerializedData.bin";
-            VersionA.Person person = new VersionA.Person();
-            person.FirstName = "Ramesh";
+            PersonModule person = new VersionA.Person();
+            person.FirstName = "Sumekh";
             person.LastName = "Verma";
+            
+
+            VersionA.Person person2 = new VersionA.Person();
+
+            
 
             Serializer.Serialize(person, path);
             person.Clear();
 
-            VersionA.Person person1 = new VersionA.Person();
-            person1 = (VersionA.Person)Deserializer.DeSerialize(path);
+            
+            PersonModule person1 = new VersionB.Person();
+            person1 = (PersonModule)Deserializer.DeSerialize(path);
             Console.WriteLine("First Name {0} \nlast name is {1} \n", person1.FirstName, person1.LastName);
 
             Console.ReadKey();
