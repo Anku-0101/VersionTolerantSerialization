@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,11 @@ namespace VersionTolerantSerialization
     {
         private string firstName;
         private string lastName;
+        
+        [OptionalField(VersionAdded = 2)]
         private int age;
+
+        [OptionalField(VersionAdded =3)]
         private string country;
 
         public string FirstName
@@ -68,6 +73,14 @@ namespace VersionTolerantSerialization
             this.age = 0;
             this.firstName = "";
             this.lastName = "";
+            this.country = "";
+        }
+
+        [OnDeserializing]
+        private void SetDefaults(StreamingContext sc)
+        {
+            this.Age = -1;
+            this.country = "N/A";
         }
     }
 }

@@ -1,0 +1,20 @@
+﻿*--*--*--*--*--*--*--*--*--*
+| Serialization callbacks  |
+*--*--*--*--*--*--*--*--*--*
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+|     Attribute	             |    When the Associated Method is Called	   |          Typical Use                                                       |
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+| OnDeserializingAttribute   |	   Before deserialization.*	               |   Initialize default values for optional fields.                           | 
+| OnDeserializedAttribute	 |     After deserialization.	               |   Fix optional field values based on contents of other fields.             |
+| OnSerializingAttribute	 |     Before serialization.	               |   Prepare for serialization. For example, create optional data structures. |
+| OnSerializedAttribute	     |     After serialization.	                   |   Log serialization events.                                                |
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+* This callback is invoked before the deserialization constructor, if one is present.
+
+
+*--*--*--*--*--*--*
+| Using Callbacks |
+*--*--*--*--*--*--*
+To use callbacks, apply the appropriate attribute to a method that accepts a StreamingContext parameter. 
+Only one method per class can be marked with each of these attributes.

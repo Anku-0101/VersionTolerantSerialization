@@ -12,11 +12,12 @@ namespace VersionB
     class Person : PersonModule
     {
         //Version 1.0
-        //private string firstName;
-        //private string lastName;
-        
-        
-        //private int age;
+        private string firstName;
+        private string lastName;
+
+        //Version 2.0
+        [OptionalField(VersionAdded =2)]
+        private int age;
 
         public new string FirstName 
         { 
@@ -43,6 +44,13 @@ namespace VersionB
             this.lastName = "";
             this.age = 0;
         }
+
+        [OnDeserializing]
+        private void SetDefaultAge(StreamingContext sc)
+        {
+            this.Age = -1;
+        }
+
     }
 
 }
