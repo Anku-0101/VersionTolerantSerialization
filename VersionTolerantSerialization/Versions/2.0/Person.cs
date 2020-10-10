@@ -42,13 +42,13 @@ namespace VersionB
         {
             this.firstName = "";
             this.lastName = "";
-            this.age = 0;
+           // this.age = 0;
         }
 
         [OnDeserializing]
         private void SetDefaultAge(StreamingContext sc)
         {
-            this.Age = -1;
+            this.Age = 20;
         }
 
     }

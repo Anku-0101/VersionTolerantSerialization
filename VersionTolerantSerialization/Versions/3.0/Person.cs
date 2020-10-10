@@ -60,7 +60,7 @@ namespace VersionC
             this.country = "";
         }
         
-        [OnDeserializing]
+        [OnSerializing]
         private void SetDefaultAgeAndCountry(StreamingContext sc)
         {
             this.Age = -1;
